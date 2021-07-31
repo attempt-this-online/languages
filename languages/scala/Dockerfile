@@ -2,8 +2,7 @@ FROM openjdk:11
 
 WORKDIR /tmp
 
-RUN apt-get update && \
-    apt-get upgrade -y && \
+RUN \
     curl -fsL https://downloads.typesafe.com/scala/2.13.6/scala-2.13.6.tgz | tar xfz - -C /usr/share && \
     mv /usr/share/scala-2.13.6 /usr/share/scala && \
     chown -R root:root /usr/share/scala && \
