@@ -1,0 +1,16 @@
+#!/bin/sh
+
+if [ $3 ]; then
+    name="[$2]($3)"
+else
+    name=${2:-$1}
+fi
+
+cat <<EOF
+# attemptthisonline/$1
+
+This image contains the execution environment for running $name on [Attempt This Online](https://ato.pxeger.com). It
+is **not intended for general use** and it may change drastically at any time.
+
+[Source](https://github.com/attempt-this-online/languages/tree/main/languages/$1)
+EOF

@@ -1,23 +1,10 @@
-FROM debian:buster
+FROM attemptthisonline/base
 
-WORKDIR /tmp
+ARG ZSH_VERSION=5.8
 
-RUN apt-get update && \
-    apt-get upgrade -y && \
-    apt-get install -y \
-        wget \
-        gcc \
-        xz-utils \
-        libncurses-dev \
-        make \
-        && \
-    wget https://www.zsh.org/pub/zsh-5.8.tar.xz && \
-    wget https://www.zsh.org/pub/zsh-5.8-doc.tar.xz && \
-    tar -xf zsh-5.8.tar.xz && \
-    tar -xf zsh-5.8-doc.tar.xz && \
-    cd zsh-5.8 && \
+RUN curl https://www.zsh.org/pub/zsh-$ZSH_VERSION.tar.xz | tar -xJ && \
+    curl https://www.zsh.org/pub/zsh-$ZSH_VERSION-doc.tar.xz | tar -xJ && \
+    cd zsh-$ZSH_VERSION && \
     ./configure --with-tcsetpgrp && \
     make && \
     make install
-
-ENTRYPOINT /usr/local/bin/zsh
