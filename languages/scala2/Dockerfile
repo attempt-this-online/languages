@@ -11,4 +11,6 @@ ENV PATH="/opt/coursier_bin:$PATH"
 # install coursier
 RUN curl -fLo cs https://git.io/coursier-cli-linux && \
     chmod +x cs && \
-    ./cs setup -y --env --apps scala
+    ./cs setup -y --env --apps scala && \
+    scala --version
+#    ^ forces scala libraries to be downloaded
