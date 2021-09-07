@@ -14,7 +14,7 @@ assert __name__ == "__main__"
 
 targets = {}
 
-now = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+now = datetime.utcnow().strftime("%Y-%m-%d-%H-%M-%S")
 
 for line in sys.stdin:
     dockerfile = line.strip()
