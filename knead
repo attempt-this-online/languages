@@ -1,0 +1,40 @@
+#!/usr/bin/python
+"""script to generate a `docker-bake.json` file to be used with `docker buildx bake`
+
+See https://docs.docker.com/engine/reference/commandline/buildx_bake/ for more info.
+
+Run it like `find . -name Dockerfile | ./knead`, and then run `docker buildx bake`.
+"""
+from datetime import datetime
+import json
+import os.path
+import sys
+
+assert __name__ == "__main__"
+
+targets = {}
+
+now = datetime.now().strftime("%Y-%m-%d-%H-%M-%S")
+
+for line in sys.stdin:
+    dockerfile = line.strip()
+    context = os.path.dirname(dockerfile)
+    name = os.path.basename(context)
+    tag_base = f"attemptthisonline/{name}:"
+    assert name not in targets, "duplicate dockerfiles"
+    targets[name] = {
+        "context": context,
+        "tags": [tag_base + "latest", tag_base + now],
+    }
+
+data = {
+    "group": {
+        "default": {
+            "targets": list(targets.keys()),
+        },
+    },
+    "target": targets,
+}
+
+with open("docker-bake.json", "w") as f:
+    json.dump(data, f)
