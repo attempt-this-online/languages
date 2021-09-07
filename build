@@ -11,7 +11,7 @@ find * -name Dockerfile | \
         context=$(dirname -- "$dockerfile")
         name=$(basename -- "$context")
         repo=attemptthisonline/$name
-        docker build -t "$repo:latest" -t "$repo:$now" -- "$context"
+        docker buildx build -t "$repo:latest" -t "$repo:$now" -- "$context"
         docker push -- "$repo:latest" 
         docker push -- "$repo:$now" 
     done
