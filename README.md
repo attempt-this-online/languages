@@ -6,5 +6,7 @@ They are **not intended for general use**, and they may change drastically at an
 [Docker Hub](https://hub.docker.com/u/attemptthisonline)
 
 ## Licence
-© Patrick Reader 2021. The ATO languages collection is licensed under the Artistic License 2.0 except where otherwise
+© Patrick Reader 2021. Code in this repository is licensed under the Artistic License 2.0 except where otherwise
 noted - see the [`LICENCE.txt`](./LICENCE.txt) file for more information.
+
+Software included in each image is copyright the respective owners; consult their licences for details.
