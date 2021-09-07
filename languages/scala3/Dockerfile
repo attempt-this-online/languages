@@ -1,16 +1,10 @@
 FROM attemptthisonline/java
 
-# setup install dir
-RUN mkdir -p /opt/coursier_bin && \
-    chmod a=rX,u+w /opt /opt/coursier_bin && \
-    mkdir -p /root/.local/share/coursier/ && \
-    ln -s /opt/coursier_bin /root/.local/share/coursier/bin # trick coursier into installing binaries into /opt/
+ARG SCALA_VERSION=3.0.1
 
-ENV PATH="/opt/coursier_bin:$PATH"
-
-# install coursier
-RUN curl -fLo cs https://git.io/coursier-cli-linux && \
-    chmod +x cs && \
-    ./cs setup -y --env --apps scala3-compiler && \
-    scala3-compiler --version
-#     ^ forces Scala compiler to be downloaded
+RUN curl -L https://github.com/lampepfl/dotty/releases/download/$SCALA_VERSION/scala3-$SCALA_VERSION.tar.gz | \
+    tar -xz && \
+    mv -T scala3-$SCALA_VERSION /usr/local/share/scala && \
+    chown -R root:root /usr/local/share/scala && \
+    chmod -R a=rX,o+w /usr/local/share/scala && \
+    ln -s /usr/local/share/scala/bin/* /usr/local/bin/
