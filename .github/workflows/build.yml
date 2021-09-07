@@ -21,3 +21,5 @@ jobs:
 
       - name: Build and push to Docker Hub
         uses: docker/bake-action@v1.6.0
+        with:
+          push: true
