@@ -1,6 +1,6 @@
 FROM attemptthisonline/base
 
-ARG PYTHON_VERSION=3.9.7
+ARG PYTHON_VERSION=3.10.0
 
 RUN curl -L https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tar.xz | \
     tar -xJ && \
