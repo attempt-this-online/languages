@@ -7,4 +7,6 @@ RUN curl -L https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VER
     cd Python-$PYTHON_VERSION && \
     ./configure && \
     make -j $(nproc) && \
-    make install
+    make install && \
+    cd / && \
+    rm -rf /tmp/Python-$PYTHON_VERSION

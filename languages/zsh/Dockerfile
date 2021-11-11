@@ -7,4 +7,6 @@ RUN curl https://www.zsh.org/pub/zsh-$ZSH_VERSION.tar.xz | tar -xJ && \
     cd zsh-$ZSH_VERSION && \
     ./configure --with-tcsetpgrp && \
     make && \
-    make install
+    make install && \
+    cd / && \
+    rm -rf /tmp/zsh-$ZSH_VERSION

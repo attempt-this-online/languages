@@ -7,4 +7,6 @@ RUN curl https://cache.ruby-lang.org/pub/ruby/$(echo $RUBY_VERSION | cut -d. -f-
     cd ruby-$RUBY_VERSION && \
     ./configure && \
     make && \
-    make install
+    make install && \
+    cd / && \
+    rm -rf /tmp/ruby-$RUBY_VERSION
