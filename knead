@@ -22,10 +22,16 @@ for line in sys.stdin:
     name = os.path.basename(context)
     tag_base = f"attemptthisonline/{name}:"
     assert name not in targets, "duplicate dockerfiles"
-    targets[name] = {
+    target = {
         "context": context,
         "tags": [tag_base + "latest", tag_base + now],
     }
+    if os.getenv("KNEAD_ENABLE_CACHE"):
+        target.update({
+            "cache-from": "type=local,src=/tmp/buildx_cache",
+            "cache-to": "type=local,src=/tmp/buildx_cache_new",
+        })
+    targets[name] = target
 
 data = {
     "group": {
