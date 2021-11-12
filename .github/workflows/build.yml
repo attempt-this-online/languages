@@ -16,6 +16,14 @@ jobs:
           username: ${{ secrets.DOCKER_HUB_USERNAME }}
           password: ${{ secrets.DOCKER_HUB_TOKEN }}
 
+      - name: Cache Docker layers
+        uses: actions/cache@v2
+        with:
+          path: /tmp/buildx_cache
+          key: ${{ runner.os }}-buildx-1-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-buildx-1
+
       - name: Generate Bake definition file
         run: find * -name Dockerfile | ./knead > docker-bake.json
 
