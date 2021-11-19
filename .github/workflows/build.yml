@@ -32,7 +32,6 @@ jobs:
           git diff --name-only ${{ github.event.before }}..${{ github.event.after }}
           | grep '/Dockerfile$'
           | ./knead > docker-bake.json
-          ; echo "Exit code was $?"
 
       - name: Build and push to Docker Hub
         uses: docker/bake-action@v1.6.0

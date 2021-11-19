@@ -27,6 +27,10 @@ for line in sys.stdin:
         "tags": [tag_base + "latest", tag_base + now],
     }
 
+if len(targets) == 0:
+    # no files inputted
+    exit(1)
+
 data = {
     "group": {
         "default": {
