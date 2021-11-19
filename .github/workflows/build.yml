@@ -1,5 +1,10 @@
 name: build
-on: [push]
+on:
+  push:
+  workflow_dispatch:
+  schedule:
+    # weekly at 9:52 on saturday (an aritrary time - as long as it's weekly)
+    - cron: '52 9 * * 6'
 jobs:
   run:
     runs-on: ubuntu-latest
@@ -21,10 +26,18 @@ jobs:
 
       - name: Generate Bake definition file
         id: knead
-        run: >
-          git diff --name-only ${{ github.event.before }}..${{ github.event.after }}
-          | grep '/Dockerfile$'
-          | ./knead
+        run: |
+          {
+            if [[ ${{ github.event_name }} = push ]]; then
+              # changed files only
+              git diff --name-only ${{ github.event.before }}..${{ github.event.after }}
+            else
+              # all files
+              find .
+            fi
+          } |
+          grep '/Dockerfile$' |
+          ./knead
         continue-on-error: true  # fails when no Dockerfiles have changed
 
       - name: Build and push to Docker Hub
