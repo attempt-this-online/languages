@@ -32,8 +32,10 @@ jobs:
           git diff --name-only ${{ github.event.before }}..${{ github.event.after }}
           | grep '/Dockerfile$'
           | ./knead > docker-bake.json
+        continue-on-error: true  # fails when no Dockerfiles have changed
 
       - name: Build and push to Docker Hub
+        if: steps.knead.conclusion == 'success'  # don't run if no Dockerfiles have changed
         uses: docker/bake-action@v1.6.0
         with:
           push: true
