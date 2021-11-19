@@ -29,6 +29,7 @@ for line in sys.stdin:
 
 if len(targets) == 0:
     # no files inputted
+    print("knead: warning: no files inputted", file=sys.stderr)
     exit(1)
 
 data = {
