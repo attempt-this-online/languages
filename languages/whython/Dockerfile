@@ -1,6 +1,6 @@
 FROM attemptthisonline/base
 
-ARG WHYTHON_VERSION=3.10.0y2
+ARG WHYTHON_VERSION=3.10.0y2.1
 
 RUN curl -L https://github.com/pxeger/whython/archive/refs/tags/v$WHYTHON_VERSION.tar.gz | \
     tar -xz && \
