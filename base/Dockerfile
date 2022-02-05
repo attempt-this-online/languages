@@ -2,4 +2,4 @@ FROM archlinux
 
 WORKDIR /tmp
 
-RUN pacman -Syu base-devel git --noconfirm
+RUN pacman -Syu base-devel unzip --noconfirm
