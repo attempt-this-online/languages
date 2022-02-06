@@ -1,3 +1,3 @@
 FROM attemptthisonline/java
 
-RUN pacman -Syu --noconfirm kotlin --assume-installed java-environment=11
+RUN pacman -Syu --noconfirm kotlin --assume-installed java-environment=17
