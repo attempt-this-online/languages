@@ -1,7 +1,7 @@
 FROM attemptthisonline/base
 
 # THE_ prefix because $BASH_VERSION is a special variable
-ARG THE_BASH_VERSION=5.1.8
+ARG THE_BASH_VERSION=5.1.16
 
 RUN curl -L https://ftpmirror.gnu.org/bash/bash-$THE_BASH_VERSION.tar.gz | \
     tar -xz && \
