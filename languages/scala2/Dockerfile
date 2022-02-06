@@ -1,6 +1,6 @@
 FROM attemptthisonline/java
 
-ARG SCALA_VERSION=2.13.6
+ARG SCALA_VERSION=2.13.8
 
 RUN curl -L https://downloads.typesafe.com/scala/$SCALA_VERSION/scala-$SCALA_VERSION.tgz | \
     tar -xz && \
