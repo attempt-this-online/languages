@@ -1,3 +1,3 @@
-FROM attemptthisonline/base
+FROM attemptthisonline/java
 
-RUN pacman -Syu --noconfirm kotlin
+RUN pacman -Syu --noconfirm kotlin --assume-installed java-environment
