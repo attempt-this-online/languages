@@ -1,6 +1,6 @@
 FROM attemptthisonline/java
 
-ARG SCALA_VERSION=3.0.1
+ARG SCALA_VERSION=3.1.1
 
 RUN curl -L https://github.com/lampepfl/dotty/releases/download/$SCALA_VERSION/scala3-$SCALA_VERSION.tar.gz | \
     tar -xz && \
