@@ -1,3 +1,3 @@
 FROM attemptthisonline/java
 
-RUN pacman -Syu --noconfirm kotlin --assume-installed jdk11-openjdk
+RUN pacman -Syu --noconfirm kotlin --assume-installed --assume-installed java-environment=11
