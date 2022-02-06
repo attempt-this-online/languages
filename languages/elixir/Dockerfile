@@ -1,4 +1,4 @@
-FROM attemptthisonline/base
+FROM attemptthisonline/erlang
 
 ARG ELIXIR_VERSION=1.13.2
 
