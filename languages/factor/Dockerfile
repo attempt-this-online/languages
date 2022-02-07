@@ -1,3 +1,7 @@
 FROM attemptthisonline/base
 
-RUN curl -L https://builds.factorcode.org/release?os=linux&cpu=x86.64 -o /usr/local/bin/factor
+ARG FACTOR_VERSION=0.98
+
+RUN curl -L https://downloads.factorcode.org/releases/$FACTOR_VERSION/factor-linux-x86-64-$FACTOR_VERSION.tar.gz | \
+    tar -xz && \
+    mv factor /opt/
