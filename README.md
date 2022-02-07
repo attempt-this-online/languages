@@ -5,6 +5,8 @@ They are **not intended for general use**, and they may change drastically at an
 
 [Docker Hub](https://hub.docker.com/u/attemptthisonline)
 
+Please submit issues to the [main ATO repository](https://github.com/attempt-this-online/attempt-this-online/issues).
+
 ## Licence
 © Patrick Reader 2021. Code in this repository is licensed under the Artistic License 2.0 except where otherwise
 noted - see the [`LICENCE.txt`](./LICENCE.txt) file for more information.
