@@ -1,7 +1,7 @@
 FROM attemptthisonline/perl
 
-ARG SLASHES_REV=460a0e01ea6df20812a2c952728c65e278718e29
+ARG SLASHES_REV=c3c84c8d98f5dbefe7d1b690c728dac3e5db1131
 
-RUN curl -L "https://github.com/TryItOnline/slashes/archive/$SLASHES_REV.tar.gz" | \
+RUN curl -L "https://github.com/attempt-this-online/slashes/archive/$SLASHES_REV.tar.gz" | \
     tar -xz && \
     mv "slashes-$SLASHES_REV" /opt/slashes
