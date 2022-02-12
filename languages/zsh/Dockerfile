@@ -1,8 +1,8 @@
 FROM attemptthisonline/base
 
-ARG ZSH_VERSION=5.8
+ARG ZSH_VERSION=5.8.1
 
-RUN curl https://www.zsh.org/pub/zsh-$ZSH_VERSION.tar.xz | tar -xJ && \
+RUN curl -L https://www.zsh.org/pub/zsh-$ZSH_VERSION.tar.xz | tar -xJ && \
     cd zsh-$ZSH_VERSION && \
     ./configure \
         --with-tcsetpgrp \
