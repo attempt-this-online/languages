@@ -1,3 +1,3 @@
-FROM attemptthisonline/pacman_python
+FROM attemptthisonline/base
 
 RUN pacman -Syu --noconfirm jq yq
