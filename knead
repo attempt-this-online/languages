@@ -8,6 +8,7 @@ Run it like `find . -name Dockerfile | ./knead`, and then run `docker buildx bak
 from datetime import datetime
 import json
 import os.path
+import re
 import sys
 
 assert __name__ == "__main__"
@@ -24,8 +25,13 @@ for line in sys.stdin:
     assert name not in targets, "duplicate dockerfiles"
     targets[name] = {
         "context": context,
+        "contexts": {},  # i.e., dependencies (see https://github.com/docker/buildx/blob/master/docs/reference/buildx_bake.md#using-a-result-of-one-target-as-a-base-image-in-another-target)
         "tags": [tag_base + "latest", tag_base + now],
     }
+    with open(dockerfile) as f:
+        for m in re.finditer(r"^\s*FROM\s+attemptthisonline/(\S+).*$", f.read(), re.M):
+            dependency = m.group(1)
+            targets[name]["contexts"]["attemptthisonline/" + dependency] = "target:" + dependency
 
 if len(targets) == 0:
     # no files inputted

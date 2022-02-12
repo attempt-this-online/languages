@@ -27,17 +27,7 @@ jobs:
       - name: Generate Bake definition file
         id: knead
         run: |
-          {
-            if [[ ${{ github.event_name }} = push ]]; then
-              # changed files only
-              git diff --name-only ${{ github.event.before }}..${{ github.event.after }}
-            else
-              # all files
-              find .
-            fi
-          } |
-          grep '/Dockerfile$' |
-          ./knead
+          find . -name Dockerfile | ./knead
         continue-on-error: true  # fails when no Dockerfiles have changed
 
       - name: Build and push to Docker Hub
