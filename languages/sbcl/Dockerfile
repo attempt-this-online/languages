@@ -1,3 +1,4 @@
+#syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/base
 
 ARG SBCL_VERSION=2.2.1

@@ -1,3 +1,4 @@
+#syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/java
 
 ARG APL_REV=5eb0a4205e27afa6122096a25008474eec562dc0

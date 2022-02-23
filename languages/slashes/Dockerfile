@@ -1,3 +1,4 @@
+#syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/perl
 
 ARG SLASHES_REV=c3c84c8d98f5dbefe7d1b690c728dac3e5db1131

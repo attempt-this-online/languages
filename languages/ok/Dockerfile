@@ -1,3 +1,4 @@
+#syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/node
 
 ARG OK_REV=97956bf6f2ea795178cd19bd7ae80ebe3a4111de

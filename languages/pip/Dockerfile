@@ -1,3 +1,4 @@
+#syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/python
 
 ARG PIP_VERSION=v1.0.2

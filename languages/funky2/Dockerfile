@@ -1,3 +1,4 @@
+#syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/csharp AS build
 
 ARG FUNKY2_VERSION=v1.1

@@ -1,3 +1,4 @@
+#syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/base
 
 ARG WHYTHON_VERSION=3.10.0y2.1

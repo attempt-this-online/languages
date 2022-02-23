@@ -1,3 +1,4 @@
+#syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/clang
 
 ARG K_REV=ba2c2bab7e533e8fdc4e4cc2ee0c0c939990d5f5
