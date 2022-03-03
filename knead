@@ -5,7 +5,9 @@ See https://docs.docker.com/engine/reference/commandline/buildx_bake/ for more i
 
 Run it like `find . -name Dockerfile | ./knead`, and then run `docker buildx bake`.
 """
+from collections import defaultdict
 from datetime import datetime
+import glob
 import json
 import os.path
 import re
@@ -13,17 +15,17 @@ import sys
 
 assert __name__ == "__main__"
 
-targets = {}
+all_targets = {}
+dependents = defaultdict(set)
 
 now = datetime.utcnow().strftime("%Y-%m-%d-%H-%M-%S")
 
-for line in sys.stdin:
-    dockerfile = line.strip()
+for dockerfile in glob.iglob("./**/Dockerfile", recursive=True):
     context = os.path.dirname(dockerfile)
     name = os.path.basename(context)
     tag_base = f"attemptthisonline/{name}:"
-    assert name not in targets, "duplicate dockerfiles"
-    targets[name] = {
+    assert name not in all_targets, "duplicate dockerfiles"
+    all_targets[name] = {
         "context": context,
         "contexts": {},  # i.e., dependencies (see https://github.com/docker/buildx/blob/master/docs/reference/buildx_bake.md#using-a-result-of-one-target-as-a-base-image-in-another-target)
         "tags": [tag_base + "latest", tag_base + now],
@@ -31,9 +33,23 @@ for line in sys.stdin:
     with open(dockerfile) as f:
         for m in re.finditer(r"^\s*FROM\s+attemptthisonline/(\S+).*$", f.read(), re.M):
             dependency = m.group(1)
-            targets[name]["contexts"]["attemptthisonline/" + dependency] = "target:" + dependency
+            all_targets[name]["contexts"]["attemptthisonline/" + dependency] = "target:" + dependency
+            dependents[dependency].add(name)
 
-if len(targets) == 0:
+
+def find_all_dependents(xs, *trail):
+    for x in xs:
+        if x in trail:
+            print(f"knead: warning: dependency cycle with {x}", file=sys.stderr)
+            return
+        task_targets[x] = all_targets[x]
+        find_all_dependents(dependents[x], *trail, x)
+
+
+task_targets = {}
+find_all_dependents(os.path.basename(os.path.dirname(line.strip())) for line in sys.stdin)
+
+if len(task_targets) == 0:
     # no files inputted
     print("knead: warning: no files inputted", file=sys.stderr)
     exit(1)
@@ -41,10 +57,10 @@ if len(targets) == 0:
 data = {
     "group": {
         "default": {
-            "targets": list(targets.keys()),
+            "targets": list(task_targets.keys()),
         },
     },
-    "target": targets,
+    "target": task_targets,
 }
 
 with open("docker-bake.json", "w") as f:
