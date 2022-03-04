@@ -54,6 +54,11 @@ if len(task_targets) == 0:
     print("knead: warning: no files inputted", file=sys.stderr)
     exit(1)
 
+for t in task_targets.values():
+    for c in t["contexts"].copy():  # copy because otherwise dict changes during iteration
+        if c.removeprefix("attemptthisonline/") not in task_targets:
+            del t["contexts"][c]
+
 data = {
     "group": {
         "default": {
