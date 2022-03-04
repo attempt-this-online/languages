@@ -56,7 +56,7 @@ if len(task_targets) == 0:
 
 for t in task_targets.values():
     for c in t["contexts"].copy():  # copy because otherwise dict changes during iteration
-        if c.removeprefix("attemptthisonline/") not in task_targets:
+        if c[len("attemptthisonline/"):] not in task_targets:
             del t["contexts"][c]
 
 data = {
