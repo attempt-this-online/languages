@@ -1,0 +1,15 @@
+*** nibbles.hs	2022-03-04 22:39:02.021754086 +0000
+--- nibbles2.hs	2022-03-06 20:47:25.279058294 +0000
+*************** runHs filename args = do
+*** 155,159 ****
+     (_, _, _, p) <- createProcess (proc "ghc" ["-O", filename]){ std_out = CreatePipe }
+     ex <- waitForProcess p
+     case ex of
+!       ExitSuccess -> callProcess "out" args
+        ExitFailure _ -> error "failed to compile hs (likely an internal nibbles bug, please report it!)"
+--- 155,159 ----
+     (_, _, _, p) <- createProcess (proc "ghc" ["-O", filename]){ std_out = CreatePipe }
+     ex <- waitForProcess p
+     case ex of
+!       ExitSuccess -> callProcess "./out" args
+        ExitFailure _ -> error "failed to compile hs (likely an internal nibbles bug, please report it!)"
