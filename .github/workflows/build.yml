@@ -2,6 +2,11 @@ name: build
 on:
   push:
   workflow_dispatch:
+    inputs:
+      targets:
+        description: 'Space-separated list of target names to rebuild'
+        required: true
+        type: string
   schedule:
     # weekly at 9:52 on saturday (an aritrary time - as long as it's weekly)
     - cron: '52 9 * * 6'
@@ -33,6 +38,11 @@ jobs:
             if [[ ${{ github.event_name }} = push ]]; then
               # changed files only
               git diff --name-only ${{ github.event.before }}..${{ github.event.after }}
+            elif [[ ${{ github.event_name }} = workflow_dispatch ]]; then
+              for x in ${{ github.event.inputs.targets }}
+              do
+                find **/$x
+              done
             else
               # all files
               find .
