@@ -11,4 +11,4 @@ RUN cd /opt && \
     cd nibbles && \
     patch < /tmp/out.patch && \
     rm /tmp/out.patch && \
-    ghc -O -package ghc *.hs && \
+    ghc -O -package ghc *.hs
