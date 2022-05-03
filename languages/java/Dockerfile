@@ -6,7 +6,7 @@ RUN ! which java
 
 # go to https://adoptium.net/ to get the latest URL
 
-ARG JAVA_URL=https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.2%2B8/OpenJDK17U-jdk_x64_linux_hotspot_17.0.2_8.tar.gz
+ARG JAVA_URL=https://github.com/adoptium/temurin18-binaries/releases/download/jdk-18.0.1%2B10/OpenJDK18U-jdk_x64_linux_hotspot_18.0.1_10.tar.gz
 
 RUN curl -L "$JAVA_URL" | \
     tar -xz && \
