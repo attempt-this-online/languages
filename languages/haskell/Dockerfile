@@ -14,4 +14,4 @@ ENV PATH=/opt/.ghcup/bin:$PATH
 RUN stack update && \
     stack config set install-ghc false --global && \
     stack config set system-ghc --global true && \
-    stack install --resolver nightly regex random
+    stack install --resolver nightly regex random heredoc
