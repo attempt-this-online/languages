@@ -1,7 +1,7 @@
 #syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/base
 
-ARG ZSH_VERSION=5.8.1
+ARG ZSH_VERSION=5.9
 
 RUN curl -L https://www.zsh.org/pub/zsh-$ZSH_VERSION.tar.xz | tar -xJ && \
     cd zsh-$ZSH_VERSION && \
