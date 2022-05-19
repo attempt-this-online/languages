@@ -12,4 +12,4 @@ RUN curl -L https://github.com/Adriandmen/05AB1E/archive/$OSABIE_REV.zip -o 05ab
     PATH=/opt/elixir/bin:$PATH mix deps.get && \
     (yes | PATH=/opt/elixir/bin:$PATH MIX_ENV=prod mix escript.build) && \
     mv osabie .. && \
-    rm /tmp/05ab1e.zip
+    rm /tmp/05ab1e.zip || true
