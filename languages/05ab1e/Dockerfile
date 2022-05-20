@@ -8,8 +8,8 @@ RUN curl -L https://github.com/Adriandmen/05AB1E/archive/$OSABIE_REV.zip -o 05ab
     cd /opt/05ab1e && \
     unzip /tmp/05ab1e.zip && \
     cd 05AB1E-$OSABIE_REV && \
-    (yes | PATH=/opt/elixir/bin:$PATH mix local.hex) && \
+    (echo "Y" | PATH=/opt/elixir/bin:$PATH mix local.hex) && \
     PATH=/opt/elixir/bin:$PATH mix deps.get && \
-    (yes | PATH=/opt/elixir/bin:$PATH MIX_ENV=prod mix escript.build) && \
+    (echo "Y" | PATH=/opt/elixir/bin:$PATH MIX_ENV=prod mix escript.build) && \
     mv osabie .. && \
-    rm /tmp/05ab1e.zip || true
+    rm /tmp/05ab1e.zip
