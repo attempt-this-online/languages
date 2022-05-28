@@ -38,7 +38,9 @@ jobs:
             if [[ ${{ github.event_name }} = push ]]; then
               # changed files only
               git diff --name-only ${{ github.event.before }}..${{ github.event.after }}
-            elif [[ ${{ github.event_name }} = workflow_dispatch ]] && [[ ${{ github.event.inputs.targets }} ]]; then
+            elif [[ ${{ github.event_name }} = workflow_dispatch ]] && grep -q . <<'END'; then
+        ${{ github.event.inputs.targets }}
+        END
               for x in ${{ github.event.inputs.targets }}
               do
                 find **/$x
