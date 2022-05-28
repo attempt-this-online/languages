@@ -5,7 +5,7 @@ on:
     inputs:
       targets:
         description: 'Space-separated list of target names to rebuild'
-        required: true
+        required: false
         type: string
   schedule:
     # weekly at 9:52 on saturday (an aritrary time - as long as it's weekly)
@@ -38,7 +38,7 @@ jobs:
             if [[ ${{ github.event_name }} = push ]]; then
               # changed files only
               git diff --name-only ${{ github.event.before }}..${{ github.event.after }}
-            elif [[ ${{ github.event_name }} = workflow_dispatch ]]; then
+            elif [[ ${{ github.event_name }} = workflow_dispatch ]] && [[ ${{ github.event.inputs.targets }} ]]; then
               for x in ${{ github.event.inputs.targets }}
               do
                 find **/$x
