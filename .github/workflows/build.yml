@@ -35,12 +35,11 @@ jobs:
         id: knead
         run: |
           {
+            TARGETS='${{ github.event.inputs.targets }}'
             if [[ ${{ github.event_name }} = push ]]; then
               # changed files only
               git diff --name-only ${{ github.event.before }}..${{ github.event.after }}
-            elif [[ ${{ github.event_name }} = workflow_dispatch ]] && grep -q . <<'END'; then
-        ${{ github.event.inputs.targets }}
-        END
+            elif [[ ${{ github.event_name }} = workflow_dispatch ]] && [[ -n "$TARGETS" ]]; then
               for x in ${{ github.event.inputs.targets }}
               do
                 find **/$x
