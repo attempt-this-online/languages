@@ -13,7 +13,7 @@ RUN mkdir -p /usr/local/texlive/bin && \
     curl -L "http://ftp.math.utah.edu/pub/tex/historic/systems/texlive/$TEXLIVE_VERSION/install-tl-unx.tar.gz" | \
     tar -xz && \
     cd install-tl-* && \
-    install-tl --repository="$TEXLIVE_REPOSITORY" --profile=/etc/texlive.profile --scheme=minimal && \
+    ./install-tl --repository="$TEXLIVE_REPOSITORY" --profile=/etc/texlive.profile --scheme=minimal && \
     tlmgr install tex4ht && \
     cd / && \
     rm -rf /tmp/install-tl-*
