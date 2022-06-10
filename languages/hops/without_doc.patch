@@ -1,0 +1,37 @@
+diff --git a/.gitignore b/.gitignore
+index eca77e3..e627290 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -1,5 +1,6 @@
+ misc
+ dist
++dist-newstyle
+ cabal-dev
+ *.o
+ *.hi
+diff --git a/Setup.hs b/Setup.hs
+index b2f7720..9a994af 100644
+--- a/Setup.hs
++++ b/Setup.hs
+@@ -1,8 +1,2 @@
+ import Distribution.Simple
+-import System.Process
+-import System.Exit
+-
+-main = defaultMainWithHooks $ simpleUserHooks { postBuild = makeManPage }
+-
+-makeManPage _ _ _ _ =
+-    runCommand "make hops.1" >>= waitForProcess >>= exitWith
++main = defaultMain
+diff --git a/hops.cabal b/hops.cabal
+index 2a3e112..8a2d513 100644
+--- a/hops.cabal
++++ b/hops.cabal
+@@ -9,7 +9,6 @@ Author:              Anders Claesson
+ Maintainer:          anders.claesson@gmail.com
+ Category:            Math
+ Build-type:          Custom
+-Extra-Source-Files:  README.md hops.1 tests/cli-properties.sh
+ Data-Files:          data/stub.db
+
+ Cabal-version:       >=1.9.2
