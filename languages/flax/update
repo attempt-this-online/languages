@@ -1,0 +1,9 @@
+#!/bin/sh
+
+set -e
+here="$(dirname "$(realpath "$0")")"
+file="$here/Dockerfile"
+commit="$(gh api /repos/PyGamer0/flax/commits/main -q .sha)"
+sed -i "s/FLAX_REV=.*/FLAX_REV=$commit/" "$file"
+git commit -m 'update flax' "$file"
+git push
