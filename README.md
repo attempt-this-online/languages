@@ -1,4 +1,7 @@
 # Languages
+
+[![Build status](https://github.com/attempt-this-online/languages/actions/workflows/build.yml/badge.svg?branch=main&event=schedule)](https://github.com/attempt-this-online/languages/actions/workflows/build.yml)
+
 A collection of Docker images for running a large variety of programming languages, both practical and esoteric. These
 images form the execution environments for running these languages on [Attempt This Online](https://ato.pxeger.com).
 They are **not intended for general use**, and they may change drastically at any time.
