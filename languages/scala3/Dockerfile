@@ -1,7 +1,7 @@
 #syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/java
 
-ARG SCALA_VERSION=3.1.1
+ARG SCALA_VERSION=3.1.3
 
 RUN curl -L https://github.com/lampepfl/dotty/releases/download/$SCALA_VERSION/scala3-$SCALA_VERSION.tar.gz | \
     tar -xz && \
