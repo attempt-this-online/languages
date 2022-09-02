@@ -1,7 +1,7 @@
 #syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/clang AS build
 
-ARG BQN_REV=5e865589b6e644fb2a275f26486ccf0ebc73d74b
+ARG BQN_REV=76141f6fe642f87364be1c61894d60c5d22ca0bf
 
 RUN pacman -Syu --noconfirm git && \
     git clone https://github.com/dzaima/CBQN.git && \
