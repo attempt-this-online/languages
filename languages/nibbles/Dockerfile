@@ -7,4 +7,5 @@ RUN cd /opt && \
     curl -L http://golfscript.com/nibbles/nibbles-$NIBBLES_VERSION.tgz | \
     tar -xz && \
     cd nibbles && \
+    rm all.hs && \
     ghc -O -package ghc *.hs
