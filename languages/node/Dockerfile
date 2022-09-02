@@ -1,7 +1,7 @@
 #syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/base
 
-ARG NODE_VERSION=v17.3.0
+ARG NODE_VERSION=v18.8.0
 
 RUN curl https://nodejs.org/dist/$NODE_VERSION/node-$NODE_VERSION-linux-x64.tar.xz | \
     tar -xJ && \
