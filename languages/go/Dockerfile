@@ -2,3 +2,8 @@
 FROM attemptthisonline/base
 
 RUN pacman -Syu --noconfirm go
+
+WORKDIR /opt/go
+
+RUN go mod init ato.pxeger.com/go && \
+    go get golang.org/x/exp
