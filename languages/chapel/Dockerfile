@@ -10,4 +10,4 @@ RUN pacman -Syu --noconfirm python cmake && \
     mv chapel-* /opt/chapel && \
     cd /opt/chapel && \
     make -j $(nproc) && \
-    ln -s $CHPL_HOME/bin/chapel /usr/local/bin/
+    ln -s $CHPL_HOME/bin/*/chpl /usr/local/bin/
