@@ -6,6 +6,10 @@ on:
     - cron: '52 9 * * 6'
 jobs:
   run:
+    permissions:
+      contents: read
+      id-token: write
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
