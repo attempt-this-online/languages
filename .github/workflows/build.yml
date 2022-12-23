@@ -4,12 +4,9 @@ on:
   workflow_dispatch:
     inputs:
       targets:
-        description: 'Space-separated list of target names to rebuild'
+        description: 'Space-separated list of target names to rebuild (empty for all)'
         required: false
         type: string
-  schedule:
-    # weekly at 9:52 on saturday (an aritrary time - as long as it's weekly)
-    - cron: '52 9 * * 6'
 jobs:
   run:
     runs-on: ubuntu-latest

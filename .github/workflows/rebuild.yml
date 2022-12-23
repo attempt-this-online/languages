@@ -1,0 +1,33 @@
+name: Full rebuild on GCP
+on:
+  workflow_dispatch:
+  schedule:
+    # weekly at 9:52 on saturday (an aritrary time - as long as it's weekly)
+    - cron: '52 9 * * 6'
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Authenticate Google Cloud SDK
+        uses: google-github-actions/auth@v1
+        with:
+          # follow https://github.com/google-github-actions/auth#setup
+          workload_identity_provider: projects/507322813771/locations/global/workloadIdentityPools/github-actions/providers/github-actions-ato-languages
+          service_account: github-actions-compute-engine@ato-builds.iam.gserviceaccount.com
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+        with:
+          install_components: beta
+
+      - name: Trigger build on Google Compute Engine
+        run: gcp_build/start
+        env:
+          GCP_PROJECT_ID: ato-builds
+          GCP_ZONE: europe-west1-b
+          GCP_SERVICE_ACCOUNT_DOCKER_HUB: ato-docker-hub-access@ato-builds.iam.gserviceaccount.com
+          GCP_DOCKER_HUB_SECRET_NAME: docker-hub-pxeger-ato
+          DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}

@@ -1,0 +1,40 @@
+#!/usr/bin/env bash
+set -e
+
+INSTANCE_ID=ato-build-$(tr -dc a-z < /dev/urandom | head -c 12)
+
+echo Creating instance "$INSTANCE_ID"
+
+gcloud beta compute instances create "$INSTANCE_ID" \
+    --project="$GCP_PROJECT_ID" \
+    --zone="$GCP_ZONE" \
+    --provisioning-model=SPOT \
+    --instance-termination-action=DELETE \
+    --max-run-duration=2h \
+    --custom-cpu=4 \
+    --custom-memory=8 \
+    --custom-vm-type=n2 \
+    --local-ssd interface=nvme \
+    --image-project=ubuntu-os-cloud \
+    --image-family=ubuntu-2204-lts \
+    --service-account="$GCP_SERVICE_ACCOUNT_DOCKER_HUB" \
+    --scopes='https://www.googleapis.com/auth/cloud-platform'
+
+function cleanup {
+    echo Deleting instance "$INSTANCE_ID"
+    gcloud compute instances delete "$INSTANCE_ID" --quiet --zone="$GCP_ZONE"
+}
+trap cleanup EXIT
+
+now=$(date +%s)
+until gcloud compute ssh "$INSTANCE_ID" --zone="$GCP_ZONE" --command date
+do
+    sleep 2
+    if (( "$(date +%s)" - "$now" >= 120 ))
+    then exit 1
+    fi
+done
+
+echo Ready
+gcloud compute ssh "$INSTANCE_ID" --zone="$GCP_ZONE" -- sudo bash -s <gcp_build/gcp_run "$GCP_DOCKER_HUB_SECRET_NAME" "$DOCKER_HUB_USERNAME"
+echo Done
