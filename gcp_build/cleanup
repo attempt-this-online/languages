@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+echo Deleting instance "$INSTANCE_ID"
+gcloud compute instances delete "$INSTANCE_ID" --quiet --zone="$GCP_ZONE"

@@ -10,6 +10,9 @@ jobs:
       contents: read
       id-token: write
 
+    env:
+      GCP_ZONE: europe-west1-b
+
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -31,7 +34,10 @@ jobs:
         run: gcp_build/start
         env:
           GCP_PROJECT_ID: ato-builds
-          GCP_ZONE: europe-west1-b
           GCP_SERVICE_ACCOUNT_DOCKER_HUB: ato-docker-hub-access@ato-builds.iam.gserviceaccount.com
           GCP_DOCKER_HUB_SECRET_NAME: docker-hub-pxeger-ato
           DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
+
+      - name: Clean up Google Compute Engine instance
+        if: always()
+        run: gcp_build/cleanup

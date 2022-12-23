@@ -3,6 +3,8 @@ set -e
 
 INSTANCE_ID=ato-build-$(tr -dc a-z < /dev/urandom | head -c 12)
 
+echo "INSTANCE_ID=$INSTANCE_ID" >>"$GITHUB_ENV"
+
 echo Creating instance "$INSTANCE_ID"
 
 gcloud beta compute instances create "$INSTANCE_ID" \
@@ -19,12 +21,6 @@ gcloud beta compute instances create "$INSTANCE_ID" \
     --image-family=ubuntu-2204-lts \
     --service-account="$GCP_SERVICE_ACCOUNT_DOCKER_HUB" \
     --scopes='https://www.googleapis.com/auth/cloud-platform'
-
-function cleanup {
-    echo Deleting instance "$INSTANCE_ID"
-    gcloud compute instances delete "$INSTANCE_ID" --quiet --zone="$GCP_ZONE"
-}
-trap cleanup EXIT
 
 now=$(date +%s)
 until gcloud compute ssh "$INSTANCE_ID" --zone="$GCP_ZONE" --command date
