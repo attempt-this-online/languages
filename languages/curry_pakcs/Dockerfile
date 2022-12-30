@@ -3,8 +3,15 @@ FROM attemptthisonline/swi_prolog
 
 ARG PAKCS_VERSION=3.5.0
 
-RUN curl -L https://www.informatik.uni-kiel.de/~pakcs/download/pakcs-$PAKCS_VERSION-amd64-Linux.tar.gz | \
-    tar -xzC /opt && \
-    cd /opt/pakcs-$PAKCS_VERSION && \
+ENV PATH=/opt/cpm/bin:/opt/pakcs/bin:$PATH
+
+RUN pacman -Syu --noconfirm git && \
+    curl -L https://www.informatik.uni-kiel.de/~pakcs/download/pakcs-$PAKCS_VERSION-amd64-Linux.tar.gz | \
+    tar -xz && \
+    mv pakcs-* /opt/pakcs && \
+    cd /opt/pakcs && \
     make -j $(nproc) && \
-    ln -s /opt/pakcs-$PAKCS_VERSION/bin/pakcs /usr/local/bin/
+    mkdir /opt/cpm && \
+    ln -s /opt/cpm /root/.cpm && \
+    cypm update && \
+    cypm install runcurry
