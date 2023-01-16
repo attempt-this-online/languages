@@ -1,7 +1,7 @@
 #syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/python
 
-ARG CHARCOAL_REV=49787e5e9011153d0dc26c712184603ae0c39641
+ARG CHARCOAL_REV=bd490d120df40388c5d876149fcb54ae99e14d4b
 
 RUN pip install --no-cache-dir --upgrade regex brotli && \
     cd /opt && \
