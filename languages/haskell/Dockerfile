@@ -11,7 +11,7 @@ RUN curl -L https://downloads.haskell.org/~ghcup/x86_64-linux-ghcup -o ghcup && 
 
 ENV PATH=/opt/.ghcup/bin:$PATH 
 
-ARG HGL_REV=3fa44e5fb0ed6987bbc516197397239703d40a3b
+ARG HGL_REV=625c2304cc86835f33b5eab737f018663e194ce8
 
 RUN cabal --store-dir /opt/cabal update && \
     cabal --store-dir /opt/cabal install --lib --package-env /opt/ghc_env \
