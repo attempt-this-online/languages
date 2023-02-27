@@ -10,7 +10,6 @@ echo Creating instance "$INSTANCE_ID"
 gcloud beta compute instances create "$INSTANCE_ID" \
     --project="$GCP_PROJECT_ID" \
     --zone="$GCP_ZONE" \
-    --provisioning-model=SPOT \
     --instance-termination-action=DELETE \
     --max-run-duration=2h \
     --custom-cpu=4 \
