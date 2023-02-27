@@ -31,5 +31,6 @@ do
 done
 
 echo Ready
-gcloud compute ssh "$INSTANCE_ID" --zone="$GCP_ZONE" -- sudo bash -s <gcp_build/gcp_run "$GCP_DOCKER_HUB_SECRET_NAME" "$DOCKER_HUB_USERNAME"
+gcloud compute scp gcp_build/gcp_run root@"$INSTANCE_ID":
+gcloud compute ssh "$INSTANCE_ID" --zone="$GCP_ZONE" -- sudo systemd-run /root/gcp_run "$GCP_DOCKER_HUB_SECRET_NAME" "$DOCKER_HUB_USERNAME"
 echo Done
