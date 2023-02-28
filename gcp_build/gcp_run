@@ -35,7 +35,8 @@ cd "$(mktemp -d)"
 git clone https://github.com/attempt-this-online/languages.git
 cd languages
 find . -name Dockerfile | ./knead
-docker buildx bake --push
+set +e
+docker buildx bake --push || echo QQQQQQQQQQQQQ DOCKER BUILD FAILED QQQQQQQQQQQQQ
 
 echo deleting self...
 name=$(curl http://metadata.google.internal/computeMetadata/v1/instance/name -H 'Metadata-Flavor: Google')
