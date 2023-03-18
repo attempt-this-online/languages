@@ -10,6 +10,6 @@ RUN curl -L https://github.com/akc/hops/archive/$HOPS_REV.tar.gz | \
     cd hops-$HOPS_REV && \
     patch < /tmp/without_doc.patch && \
     rm /tmp/without_doc.patch && \
-    cabal --store-dir /opt/cabal install --package-env /opt/ghc_env --installdir /usr/local/bin --allow-newer && \
+    cabal --store-dir /opt/cabal install --package-env /opt/ghc_env --install-method=copy --installdir /usr/local/bin --allow-newer && \
     cd / && \
     rm -rf /tmp/hops-$HOPS_REV
