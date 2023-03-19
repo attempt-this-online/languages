@@ -13,12 +13,15 @@ ENV PATH=/opt/.ghcup/bin:$PATH
 
 ARG HGL_REV=0ed1b274edc03bd3aaac18b66204c1ecb785f4cd
 
+COPY hgl_base_4_18.patch /tmp/
+
 RUN cabal --store-dir /opt/cabal update && \
     cabal --store-dir /opt/cabal install --lib --package-env /opt/ghc_env \
         random regex heredoc free hspec QuickCheck && \
     curl -L https://gitlab.com/WheatWizard/haskell-golfing-library/-/archive/$HGL_REV/haskell-golfing-library-$HGL_REV.tar.gz | \
     tar -xz && \
     cd haskell-golfing-library-* && \
+    patch < /tmp/hgl_base_4_18.patch src/P/Functor.hs && \
     cabal --store-dir /opt/cabal install --lib --package-env /opt/ghc_env . && \
     cd / && \
     rm -rf /tmp/*
