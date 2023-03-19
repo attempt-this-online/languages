@@ -3,6 +3,7 @@ FROM attemptthisonline/base
 
 ARG DOTNET_SDK_VERSION=6.0.100
 
+ENV DOTNET_ROOT=/opt/dotnet
 ENV DOTNET_CLI_TELEMETRY_OPTOUT=1
 
 RUN mkdir /opt/dotnet && \
