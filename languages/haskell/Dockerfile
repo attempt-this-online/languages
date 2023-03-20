@@ -18,7 +18,7 @@ COPY hgl_base_4_18.patch /tmp/
 RUN cabal --store-dir /opt/cabal update && \
     cabal --store-dir /opt/cabal install --lib --package-env /opt/ghc_env \
         base ghc ghc-boot template-haskell ghc-boot-th ghc-prim ghci \
-        rts unix terminfo pretty time filepath directory process setenv \
+        unix terminfo pretty time filepath directory process setenv \
         text binary array bytestring containers unordered-containers hashable integer-gmp utf8-string \
         transformers mtl semigroupoids free bifunctors profunctors comonad distributive primitive \
         deepseq hpc stm call-stack random regex heredoc hspec QuickCheck colour && \
