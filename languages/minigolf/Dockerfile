@@ -1,5 +1,5 @@
 FROM attemptthisonline/python
 
-RUN curl -L https://github.com/jfioasd/minigolf/archive/refs/tags/tag.tar.gz | \
+RUN curl -L https://github.com/jfioasd/minigolf/archive/refs/tags/tag0.2.tar.gz | \
     tar -xz && \
-    mv minigolf-tag /opt/minigolf
+    mv minigolf-tag0.2 /opt/minigolf
