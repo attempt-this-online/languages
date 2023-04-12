@@ -1,9 +1,9 @@
 #syntax=docker/dockerfile-upstream:1.4.0-rc1
-FROM attemptthisonline/clang
+FROM attemptthisonline/base
 
-ARG CHAPEL_VERSION=1.29.0
+ARG CHAPEL_VERSION=1.30.0
 
-ENV CHPL_HOME=/opt/chapel CHPL_LLVM=system
+ENV CHPL_HOME=/opt/chapel CHPL_LLVM=none
 RUN pacman -Syu --noconfirm python cmake && \
     curl -L https://github.com/chapel-lang/chapel/releases/download/$CHAPEL_VERSION/chapel-$CHAPEL_VERSION.tar.gz | \
     tar -xz && \

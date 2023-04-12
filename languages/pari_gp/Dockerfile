@@ -2,7 +2,7 @@
 
 FROM attemptthisonline/base
 
-ARG PARIGP_VERSION=2.15.0
+ARG PARIGP_VERSION=2.15.3
 
 RUN curl -L https://pari.math.u-bordeaux.fr/pub/pari/unix/pari-$PARIGP_VERSION.tar.gz | \
     tar -xz && \

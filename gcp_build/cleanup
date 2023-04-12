@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+# Cleans up the Compute Engine instance if starting the job fails
 
 echo Deleting instance "$INSTANCE_ID"
 gcloud compute instances delete "$INSTANCE_ID" --quiet --zone="$GCP_ZONE"

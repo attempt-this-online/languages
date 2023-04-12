@@ -31,6 +31,7 @@ jobs:
           install_components: beta
 
       - name: Trigger build on Google Compute Engine
+        id: trigger_build
         run: gcp_build/start
         env:
           GCP_PROJECT_ID: ato-builds
@@ -38,6 +39,6 @@ jobs:
           GCP_DOCKER_HUB_SECRET_NAME: docker-hub-pxeger-ato
           DOCKER_HUB_USERNAME: ${{ secrets.DOCKER_HUB_USERNAME }}
 
-      - name: Clean up Google Compute Engine instance
-        if: always()
+      - name: Clean up Google Compute Engine instance on failure
+        if: "failure() && steps.trigger_build.outcome == 'failure'"
         run: gcp_build/cleanup
