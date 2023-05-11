@@ -13,7 +13,7 @@ gcloud beta compute instances create "$INSTANCE_ID" \
     --instance-termination-action=DELETE \
     --max-run-duration=2h \
     --custom-cpu=4 \
-    --custom-memory=16 \
+    --custom-memory=32 \
     --custom-vm-type=n2 \
     --local-ssd interface=nvme \
     --image-project=ubuntu-os-cloud \
