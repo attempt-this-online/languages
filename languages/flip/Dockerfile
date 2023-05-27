@@ -1,5 +1,5 @@
 FROM attemptthisonline/python
 
-RUN curl -L https://github.com/jfioasd/Flip/archive/refs/tags/flip.tar.gz | \
+RUN curl -L https://github.com/jfioasd/Flip/archive/refs/tags/flip1.2.tar.gz | \
     tar -xz && \
     mv Flip-* /opt/flip
