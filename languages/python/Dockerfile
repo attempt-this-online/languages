@@ -1,7 +1,7 @@
 #syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/base
 
-ARG PYTHON_VERSION=3.10.6
+ARG PYTHON_VERSION=3.11.4
 
 RUN curl -L https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tar.xz | \
     tar -xJ && \
