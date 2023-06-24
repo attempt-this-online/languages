@@ -1,7 +1,7 @@
 #syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/base
 
-ARG PWSH_VERSION=7.2.11
+ARG PWSH_VERSION=7.3.4
 
 RUN mkdir -p /opt/microsoft/powershell/7 && \
     curl -L https://github.com/PowerShell/PowerShell/releases/download/v$PWSH_VERSION/powershell-$PWSH_VERSION-linux-x64.tar.gz | \
