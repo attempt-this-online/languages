@@ -11,7 +11,7 @@ RUN curl -L https://downloads.haskell.org/~ghcup/x86_64-linux-ghcup -o ghcup && 
 
 ENV PATH=/opt/.ghcup/bin:$PATH 
 
-ARG HGL_REV=0ed1b274edc03bd3aaac18b66204c1ecb785f4cd
+ARG HGL_REV=327f42477fbb9d9b4223c8689b06e4d24a536165
 
 COPY hgl_base_4_18.patch /tmp/
 
