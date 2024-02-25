@@ -1,7 +1,7 @@
 #syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/haskell
 
-ARG NEKOMATA_VERSION=0.5.0.0
+ARG NEKOMATA_VERSION=0.6.0.0
 
 RUN curl -L https://github.com/AlephAlpha/Nekomata/archive/refs/tags/v$NEKOMATA_VERSION.tar.gz | \
     tar -xz && \
