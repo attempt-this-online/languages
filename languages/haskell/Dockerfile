@@ -4,16 +4,14 @@ FROM attemptthisonline/base
 RUN curl -L https://downloads.haskell.org/~ghcup/x86_64-linux-ghcup -o ghcup && \
     chmod +x ghcup && \
     export GHCUP_INSTALL_BASE_PREFIX=/opt/ && \
-    ./ghcup install ghc latest --set && \
-    ./ghcup install cabal latest && \
+    ./ghcup install ghc 9.4 --set && \
+    ./ghcup install cabal recommended && \
     ./ghcup gc --cache --profiling-libs --tmpdirs --share-dir && \
     rm ./ghcup
 
 ENV PATH=/opt/.ghcup/bin:$PATH 
 
-ARG HGL_REV=327f42477fbb9d9b4223c8689b06e4d24a536165
-
-COPY hgl_base_4_18.patch /tmp/
+ARG HGL_REV=c1a0aeef949c1c243fe6007fca72e1a1e97c19db
 
 RUN cabal --store-dir /opt/cabal update && \
     cabal --store-dir /opt/cabal install --lib --package-env /opt/ghc_env \
@@ -25,7 +23,6 @@ RUN cabal --store-dir /opt/cabal update && \
     curl -L https://gitlab.com/WheatWizard/haskell-golfing-library/-/archive/$HGL_REV/haskell-golfing-library-$HGL_REV.tar.gz | \
     tar -xz && \
     cd haskell-golfing-library-* && \
-    patch < /tmp/hgl_base_4_18.patch src/P/Functor.hs && \
     cabal --store-dir /opt/cabal install --lib --package-env /opt/ghc_env . && \
     cd / && \
     rm -rf /tmp/*
