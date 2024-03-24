@@ -1,7 +1,7 @@
 #syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/base
 
-ARG TEXLIVE_VERSION=2023
+ARG TEXLIVE_VERSION=2024
 ARG TEXLIVE_REPOSITORY=http://ftp.cvut.cz/tex-archive/systems/texlive/tlnet/
 
 ENV PATH="$PATH:/usr/local/texlive/bin/linux"
