@@ -1,0 +1,5 @@
+build:
+  tags: [Linux, shell_executor]
+  script:
+    - mkdir output
+    - go run breadmaker.go --all
