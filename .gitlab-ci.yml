@@ -4,3 +4,6 @@ build:
     - mkdir output
     - podman login "$CI_REGISTRY" -u "$CI_REGISTRY_USER" --password-stdin <<<"$CI_REGISTRY_PASSWORD"
     - go run breadmaker.go --all
+  artifacts:
+    paths:
+      - output/*.log

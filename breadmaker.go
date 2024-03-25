@@ -9,7 +9,6 @@ import (
 	"os/exec"
 	"path/filepath"
 	"regexp"
-	"strconv"
 	"sync"
 	"time"
 )
@@ -85,9 +84,9 @@ func main() {
 		image := queue[0]
 		targets[image] = struct{}{}
 		queue = queue[1:]
-		// if _, ok := contexts[image]; !ok {
-		//   panic("unknown image: " + image)
-		// }
+		if _, ok := contexts[image]; !ok {
+			panic("unknown image: " + image)
+		}
 		for _, dependent := range dependencyGraph[image] {
 			if _, exists := targets[dependent]; !exists {
 				queue = append(queue, dependent)
@@ -122,57 +121,35 @@ func main() {
 	}
 	fmt.Println("starting build at", now)
 
-	buildStatuses := make(map[string]bool)
 	numFailed := 0
 	numDone := 0
 	for numDone < len(targets) {
 		result := <-resultsChan
-		buildStatuses[result.imageName] = result.ok
-		if !result.ok {
-			numFailed += 1
-		}
 		numDone += 1
-		fmt.Printf("%s done (%v/%v)\n", result.imageName, numDone, len(targets))
+		var statusString string
+		if result.ok {
+			statusString = "succeeded"
+		} else {
+			numFailed += 1
+			statusString = RED + "failed" + RESET
+		}
+		fmt.Printf("%v %v (%v/%v)\n", result.imageName, statusString, numDone, len(targets))
 	}
 
-	printLogs(buildStatuses)
-	fmt.Printf(RED+"%v failures"+RESET+"\n", numFailed)
 	if numFailed != 0 {
+		var plural string
+		if numFailed != 1 {
+			plural = "s"
+		}
+		fmt.Printf("%v%v failure%v%v\n", RED, numFailed, plural, RESET)
 		os.Exit(1)
+	} else {
+		fmt.Println("0 failures")
 	}
 }
 
 const RED = "\x1B[91m"
 const RESET = "\x1B[0m"
-
-func printLogs(buildStatuses map[string]bool) {
-	// syntax from https://docs.gitlab.com/ee/ci/jobs/#expand-and-collapse-job-log-sections
-	for name, succeeded := range buildStatuses {
-		unixTimestamp := strconv.FormatInt(time.Now().UTC().Unix(), 10)
-		if !succeeded {
-			// red text
-			fmt.Print(RED)
-		}
-		fmt.Println("\x1B[0Ksection_start:" + unixTimestamp + ":" + name + "[collapsed=true]\r\x1B[0KBuild " + name)
-		if !succeeded {
-			fmt.Print(RESET)
-		}
-		printFile(name)
-		fmt.Println("\x1B[0Ksection_end:" + unixTimestamp + ":" + name + "\r\x1B[0K")
-	}
-}
-
-func printFile(name string) {
-	file, err := os.Open("output/" + name + ".log")
-	if err != nil {
-		panic(err)
-	}
-	defer file.Close()
-	_, err = io.Copy(os.Stdout, file)
-	if err != nil {
-		panic(err)
-	}
-}
 
 func build(
 	name string,
