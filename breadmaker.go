@@ -180,14 +180,20 @@ func build(
 	now string,
 	resultChan chan result,
 ) {
-	tagBase := "registry.gitlab.pxeger.com/attempt-this-online/languages/" + name + ":"
+	tagBase1 := "registry.gitlab.pxeger.com/attempt-this-online/languages/" + name + ":"
+	tagBase2 := "attemptthisonline/" + name + ":"
 	cmd := exec.Command(
 		"podman",
 		"build",
+		"--no-cache",
 		"-t",
-		tagBase+now,
+		tagBase1+now,
 		"-t",
-		tagBase+"latest",
+		tagBase1+"latest",
+		"-t",
+		tagBase2+now,
+		"-t",
+		tagBase2+"latest",
 		context,
 	)
 	waitForOutputLoggers := logOutput("output/"+name+".log", cmd)
