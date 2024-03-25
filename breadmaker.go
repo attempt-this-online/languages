@@ -180,7 +180,7 @@ func build(
 	now string,
 	resultChan chan result,
 ) {
-	tagBase := "attemptthisonline/" + name + ":"
+	tagBase := "registry.gitlab.pxeger.com/attempt-this-online/languages/" + name + ":"
 	cmd := exec.Command(
 		"podman",
 		"build",
