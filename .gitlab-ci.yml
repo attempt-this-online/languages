@@ -7,3 +7,5 @@ build:
   artifacts:
     paths:
       - output/*.log
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "schedule"
