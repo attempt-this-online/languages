@@ -10,6 +10,6 @@ RUN curl -L https://github.com/justinmeza/lci/archive/refs/tags/v$LOLCODE_VERSIO
 	cmake . && \
 	make && \
 	make install && \
-	cp lci /usr/local/bin/ && \ 
+	cp lci /usr/local/bin/ && \
 	cd /tmp/ && \
 	rm -rf lci-$LOLCODE_VERSION

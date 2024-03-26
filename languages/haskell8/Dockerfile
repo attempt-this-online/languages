@@ -8,4 +8,4 @@ RUN curl -L https://downloads.haskell.org/~ghcup/x86_64-linux-ghcup -o ghcup && 
     ./ghcup gc --cache --profiling-libs --tmpdirs --share-dir && \
     rm ./ghcup
 
-ENV PATH=/opt/.ghcup/bin:$PATH 
+ENV PATH=/opt/.ghcup/bin:$PATH
