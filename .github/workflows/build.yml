@@ -28,7 +28,7 @@ jobs:
           exit_status=0
 
           # only build images which are new or modified since the base
-          git diff --name-only --no-renames --diff-filter=AM "${{ github.base_ref }}" \
+          git diff --name-only --no-renames --diff-filter=AM "${{ github.event.pull_request.base.sha }}" \
           | grep Dockerfile | rev | cut -d/ -f2 | rev \
           | go run breadmaker.go --docker || {
             echo ::error::Build failed!
