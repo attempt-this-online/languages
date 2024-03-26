@@ -5,8 +5,6 @@ stages: [init, build]
   stage: build
   # TODO: add special tag to ensure the same runner is used for all jobs in this pipeline
   tags: [Linux, shell_executor]
-  rules:
-    - if: $CI_PIPELINE_SOURCE == "schedule"
 
 init:
   extends: .base
