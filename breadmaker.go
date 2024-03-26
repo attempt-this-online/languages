@@ -9,6 +9,7 @@ import (
 	"os/exec"
 	"path/filepath"
 	"regexp"
+	"strings"
 	"sync"
 	"time"
 )
@@ -30,7 +31,48 @@ type result struct {
 	imageName string
 }
 
+type options struct {
+	all            bool
+	dockerOrPodman string
+	extraOptions   []string
+	tagBases       []string
+}
+
+func printUsage() {
+	fmt.Println("usage: breadmaker (--podman | --docker) [--all] [-O=<builder option> | -t=<tag base>] [...]")
+}
+
+func parseOptions() options {
+	var options options
+	for _, arg := range os.Args[1:] {
+		switch arg {
+		case "--all":
+			options.all = true
+		case "--podman":
+			options.dockerOrPodman = "podman"
+		case "--docker":
+			options.dockerOrPodman = "docker"
+		default:
+			if strings.HasPrefix(arg, "-O=") {
+				options.extraOptions = append(options.extraOptions, arg[3:])
+			} else if strings.HasPrefix(arg, "-t=") {
+				options.tagBases = append(options.tagBases, arg[3:])
+			} else {
+				printUsage()
+				panic("unknown option: " + arg)
+			}
+		}
+	}
+	if options.dockerOrPodman == "" {
+		printUsage()
+		panic("You must provide either --docker or --podman")
+	}
+	return options
+}
+
 func main() {
+	options := parseOptions()
+
 	dependencyGraph := make(map[string][]string)
 	contexts := make(map[string]string)
 
@@ -65,17 +107,10 @@ func main() {
 	}
 
 	var queue []string
-	switch len(os.Args) {
-	case 1:
+	if options.all {
+		queue = []string{"base"}
+	} else {
 		queue = getInputImages()
-	case 2:
-		if os.Args[1] == "--all" {
-			queue = []string{"base"}
-		} else {
-			panic("unknown option")
-		}
-	default:
-		panic("too many options")
 	}
 
 	targets := make(map[string]struct{})
@@ -112,7 +147,7 @@ func main() {
 		go func(image string) {
 			waitGroups[image].Wait()
 
-			build(image, contexts[image], now, resultsChan)
+			build(image, contexts[image], options, now, resultsChan)
 
 			for _, dependent := range dependencyGraph[image] {
 				waitGroups[dependent].Done()
@@ -154,25 +189,22 @@ const RESET = "\x1B[0m"
 func build(
 	name string,
 	context string,
+	options options,
 	now string,
 	resultChan chan result,
 ) {
-	tagBase1 := "registry.gitlab.pxeger.com/attempt-this-online/languages/" + name + ":"
-	tagBase2 := "attemptthisonline/" + name + ":"
-	cmd := exec.Command(
-		"podman",
+	combinedOptions := append([]string{
 		"build",
-		"--no-cache",
-		"-t",
-		tagBase1+now,
-		"-t",
-		tagBase1+"latest",
-		"-t",
-		tagBase2+now,
-		"-t",
-		tagBase2+"latest",
 		context,
-	)
+	}, options.extraOptions...)
+	for _, tagBase := range options.tagBases {
+		for _, version := range []string{now, "latest"} {
+			combinedOptions = append(combinedOptions, "-t", tagBase+name+":"+version)
+		}
+	}
+	cmd := exec.Command(options.dockerOrPodman, combinedOptions...)
+  fmt.Println(options.dockerOrPodman, combinedOptions)
+	cmd = exec.Command("sleep", "1")
 	waitForOutputLoggers := logOutput("output/"+name+".log", cmd)
 	err := cmd.Start()
 	if err != nil {
