@@ -36,7 +36,9 @@ jobs:
           }
 
           for file in output/*.log; do
-            echo "::group::${${file%.log}#output/}"
+            name=${file#output/}
+            name=${name%.log}
+            echo "::group::$name"
             cat "$file"
             echo "::endgroup::"
           done
