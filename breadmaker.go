@@ -203,8 +203,6 @@ func build(
 		}
 	}
 	cmd := exec.Command(options.dockerOrPodman, combinedOptions...)
-  fmt.Println(options.dockerOrPodman, combinedOptions)
-	cmd = exec.Command("sleep", "1")
 	waitForOutputLoggers := logOutput("output/"+name+".log", cmd)
 	err := cmd.Start()
 	if err != nil {
