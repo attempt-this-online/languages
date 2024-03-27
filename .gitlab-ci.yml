@@ -3,8 +3,7 @@ stages: [init, build]
 # template used for building docker images
 .base:
   stage: build
-  # TODO: add special tag to ensure the same runner is used for all jobs in this pipeline
-  tags: [Linux, shell_executor]
+  tags: [ato_buildbox]
 
 init:
   extends: .base
