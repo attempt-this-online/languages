@@ -35,6 +35,7 @@ jobs:
             exit_status=$?
           }
 
+          shopt -s nullglob
           for file in output/*.log; do
             name=${file#output/}
             name=${name%.log}
