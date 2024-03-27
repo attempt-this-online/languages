@@ -1,4 +1,3 @@
-#syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/gcc
 
 ARG BRACMAT_REV=f151843735bf5cb60ef056c0023110329845d8f1

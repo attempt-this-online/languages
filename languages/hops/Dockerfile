@@ -1,4 +1,3 @@
-#syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/haskell
 
 ARG HOPS_REV=fa5c0c731d586a50b86d2b0c08350d53769295e9

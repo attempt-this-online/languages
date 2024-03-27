@@ -1,4 +1,3 @@
-#syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/clang
 
 ARG COGNATE_REV=7582199a03830dceb803c294686e09e3746cf814

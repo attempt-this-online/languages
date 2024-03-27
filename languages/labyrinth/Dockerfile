@@ -1,4 +1,3 @@
-#syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/ruby
 
 ARG LABYRINTH_REV=d3cc04f398594549c1c85c8116ef146d461a5b6f

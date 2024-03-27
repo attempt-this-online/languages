@@ -1,4 +1,3 @@
-#syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/java
 
 ARG QUIPU_VERSION=0.1.0

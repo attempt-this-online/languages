@@ -1,4 +1,3 @@
-#syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/elixir
 
 ARG OSABIE_REV=1d532f3aad3af265691c9c1bc601c246bfa2944e

@@ -1,4 +1,3 @@
-#syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/gcc
 
 ARG DIRAC_REV=c1a2b9c42f2dba5c685da0769093e08fc27878f2

@@ -1,4 +1,3 @@
-#syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/python
 
 ARG CHARCOAL_REV=796761f03b9d4861eb07c4a505c414d7fd747c30

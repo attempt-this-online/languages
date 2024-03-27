@@ -1,4 +1,3 @@
-#syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/haskell
 
 ARG WSPACE_REV=5eb78c6afae9f5dd2d2012a1784f6483ec824135

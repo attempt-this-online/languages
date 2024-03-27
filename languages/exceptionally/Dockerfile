@@ -1,4 +1,3 @@
-#syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/whython
 
 ARG EXCEPTIONALLY_REV=cee69c6fa739d5f6606172f312fabb20ff73ad3d

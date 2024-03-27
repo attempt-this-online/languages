@@ -1,4 +1,3 @@
-#syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/python
 
 ARG PYTH_REV=bb7c848818caa96932a058ac047ef3b98f3527bf
