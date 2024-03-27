@@ -1,4 +1,3 @@
-#syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/clang AS build
 
 ARG BQN_REV=76141f6fe642f87364be1c61894d60c5d22ca0bf

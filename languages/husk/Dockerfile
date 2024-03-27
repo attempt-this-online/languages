@@ -1,4 +1,3 @@
-#syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/haskell8
 
 ARG HUSK_REV=03b3cf96e93824075cc70cef4bb3fd7242bd2ad0

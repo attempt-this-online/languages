@@ -1,4 +1,3 @@
-#syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/base
 
 ARG LOLCODE_VERSION=0.11.2

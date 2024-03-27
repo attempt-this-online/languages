@@ -1,4 +1,3 @@
-#syntax=docker/dockerfile-upstream:1.4.0-rc1
 FROM attemptthisonline/swi_prolog
 
 ARG PAKCS_VERSION=3.5.1
