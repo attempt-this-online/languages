@@ -1,4 +1,4 @@
-FROM attemptthisonline/base
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/base
 
 # Nightly:
 # ARG FACTOR_VERSION=2023-07-30-13-46

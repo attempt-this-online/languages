@@ -1,4 +1,4 @@
-FROM attemptthisonline/base
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/base
 
 # check not already installed
 RUN ! which java

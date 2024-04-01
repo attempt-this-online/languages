@@ -1,4 +1,4 @@
-FROM attemptthisonline/node
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/node
 
 ARG KNIGHT_VERSION=3105797369241d3f36613b4da2778c24f93f94bd
 

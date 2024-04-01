@@ -1,4 +1,4 @@
-FROM attemptthisonline/java
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/java
 
 ARG SCALA_VERSION=2.13.8
 

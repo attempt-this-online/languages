@@ -1,4 +1,4 @@
-FROM attemptthisonline/node
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/node
 
 ARG ELM_VERSION=0.19.1
 

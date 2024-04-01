@@ -1,4 +1,4 @@
-FROM attemptthisonline/python
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/python
 
 ARG PIP_VERSION=v1.2.0
 

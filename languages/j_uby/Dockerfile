@@ -1,4 +1,4 @@
-FROM attemptthisonline/ruby
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/ruby
 
 ARG J_UBY_REV=d95e2d0786ee639a7cf63f48a1404d657c56fbcd
 

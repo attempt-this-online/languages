@@ -1,4 +1,4 @@
-FROM attemptthisonline/csharp AS build
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/csharp AS build
 
 ARG FUNKY2_VERSION=v1.1
 
@@ -7,6 +7,6 @@ RUN curl -L https://github.com/TehFlaminTaco/Funky2/archive/refs/tags/$FUNKY2_VE
     cd Funky2-* && \
     dotnet publish --sc -r linux-x64 -o /opt/
 
-FROM attemptthisonline/base
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/base
 
 COPY --from=build /opt/Funky2 /usr/local/bin/

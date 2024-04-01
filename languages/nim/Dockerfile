@@ -1,4 +1,4 @@
-FROM attemptthisonline/base
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/base
 
 ARG NIM_VERSION=1.6.6
 

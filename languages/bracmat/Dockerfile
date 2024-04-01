@@ -1,4 +1,4 @@
-FROM attemptthisonline/gcc
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/gcc
 
 ARG BRACMAT_REV=f151843735bf5cb60ef056c0023110329845d8f1
 

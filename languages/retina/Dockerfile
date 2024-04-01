@@ -1,4 +1,4 @@
-FROM attemptthisonline/csharp AS build
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/csharp AS build
 
 ARG RETINA_VERSION=v1.2.1
 
@@ -8,7 +8,7 @@ RUN curl -L https://github.com/attempt-this-online/retina/archive/refs/tags/$RET
     mkdir /opt/retina && \
     dotnet publish --sc -r linux-x64 -o /opt/retina
 
-FROM attemptthisonline/base
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/base
 
 ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
 

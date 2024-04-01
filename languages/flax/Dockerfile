@@ -1,4 +1,4 @@
-FROM attemptthisonline/python
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/python
 
 ARG FLAX_REV=3823d7e7728977b8b65606fe7411d2bdf8024080
 

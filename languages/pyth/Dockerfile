@@ -1,4 +1,4 @@
-FROM attemptthisonline/python
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/python
 
 ARG PYTH_REV=bb7c848818caa96932a058ac047ef3b98f3527bf
 

@@ -1,4 +1,4 @@
-FROM attemptthisonline/haskell8
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/haskell8
 
 ARG NIBBLES_VERSION=1.01
 

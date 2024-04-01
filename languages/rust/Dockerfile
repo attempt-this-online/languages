@@ -1,4 +1,4 @@
-FROM attemptthisonline/base
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/base
 
 RUN pacman -Syu --noconfirm rustup && \
     rustup toolchain install beta --profile minimal && \

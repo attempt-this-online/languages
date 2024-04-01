@@ -1,4 +1,4 @@
-FROM attemptthisonline/base
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/base
 
 ARG NODE_VERSION=v18.8.0
 

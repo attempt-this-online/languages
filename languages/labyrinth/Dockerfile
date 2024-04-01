@@ -1,4 +1,4 @@
-FROM attemptthisonline/ruby
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/ruby
 
 ARG LABYRINTH_REV=d3cc04f398594549c1c85c8116ef146d461a5b6f
 

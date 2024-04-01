@@ -13,11 +13,7 @@ for dockerfile in glob.iglob("./**/Dockerfile", recursive=True):
         dependencies = [m.group(1) for m in re.finditer(r"^\s*FROM\s+attemptthisonline/(\S+).*$", f.read(), re.M)]
     build_tag = "attemptthisonline/" + name
     push_tags = [
-        tag_base + name + ":" + version
-        for tag_base in (
-            "registry.gitlab.pxeger.com/attempt-this-online/languages/",
-            # "docker.io/attemptthisonline/",  # TODO: login to Docker Hub
-        )
+        "registry.gitlab.pxeger.com/attempt-this-online/languages/" + name + ":" + version
         for version in ("$now", "latest")
     ]
     result[f"build {name}"] = {

@@ -1,4 +1,4 @@
-FROM archlinux/archlinux
+FROM docker.io/archlinux/archlinux
 
 WORKDIR /tmp
 

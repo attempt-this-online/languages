@@ -1,4 +1,4 @@
-FROM attemptthisonline/haskell
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/haskell
 
 ARG WSPACE_REV=5eb78c6afae9f5dd2d2012a1784f6483ec824135
 

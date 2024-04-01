@@ -1,4 +1,4 @@
-FROM attemptthisonline/haskell8
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/haskell8
 
 ARG HUSK_REV=03b3cf96e93824075cc70cef4bb3fd7242bd2ad0
 

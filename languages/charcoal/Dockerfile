@@ -1,4 +1,4 @@
-FROM attemptthisonline/python
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/python
 
 ARG CHARCOAL_REV=796761f03b9d4861eb07c4a505c414d7fd747c30
 

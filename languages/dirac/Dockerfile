@@ -1,4 +1,4 @@
-FROM attemptthisonline/gcc
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/gcc
 
 ARG DIRAC_REV=c1a2b9c42f2dba5c685da0769093e08fc27878f2
 

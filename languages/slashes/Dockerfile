@@ -1,4 +1,4 @@
-FROM attemptthisonline/perl
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/perl
 
 ARG SLASHES_REV=c3c84c8d98f5dbefe7d1b690c728dac3e5db1131
 

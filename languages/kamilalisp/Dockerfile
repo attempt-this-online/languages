@@ -1,4 +1,4 @@
-FROM attemptthisonline/java
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/java
 
 ARG KAMILALISP_VER=0.3.0.1
 

@@ -1,4 +1,4 @@
-FROM attemptthisonline/java
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/java
 
 ARG APL_REV=5eb0a4205e27afa6122096a25008474eec562dc0
 

@@ -1,4 +1,4 @@
-FROM attemptthisonline/elixir
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/elixir
 
 ARG OSABIE_REV=1d532f3aad3af265691c9c1bc601c246bfa2944e
 

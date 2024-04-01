@@ -1,4 +1,4 @@
-FROM attemptthisonline/clang
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/clang
 
 ARG COGNATE_REV=7582199a03830dceb803c294686e09e3746cf814
 

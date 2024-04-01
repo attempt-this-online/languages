@@ -1,4 +1,4 @@
-FROM attemptthisonline/java
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/java
 
 ARG QUIPU_VERSION=0.1.0
 

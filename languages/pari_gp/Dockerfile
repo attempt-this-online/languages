@@ -1,5 +1,5 @@
 
-FROM attemptthisonline/base
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/base
 
 ARG PARIGP_VERSION=2.15.4
 

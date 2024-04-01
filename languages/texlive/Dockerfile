@@ -1,4 +1,4 @@
-FROM attemptthisonline/base
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/base
 
 ARG TEXLIVE_VERSION=2024
 ARG TEXLIVE_REPOSITORY=http://ftp.cvut.cz/tex-archive/systems/texlive/tlnet/

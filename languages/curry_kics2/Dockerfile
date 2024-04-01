@@ -1,4 +1,4 @@
-FROM attemptthisonline/curry_pakcs as build
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/curry_pakcs as build
 
 ARG KICS2_VERSION=3.0.0
 
@@ -12,7 +12,7 @@ RUN pacman -Syu --noconfirm python stack && \
     cd kics2 && \
     make -j $(nproc)
 
-FROM attemptthisonline/base
+FROM registry.gitlab.pxeger.com/attempt-this-online/languages/base
 
 COPY --from=build /opt/kics2 /opt/kics2
 
