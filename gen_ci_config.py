@@ -10,8 +10,8 @@ for dockerfile in glob.iglob("./**/Dockerfile", recursive=True):
     name = os.path.basename(context)
     assert re.fullmatch(r"[\w-]+", name), f"unsafe name {name!r}"
     with open(dockerfile) as f:
-        dependencies = [m.group(1) for m in re.finditer(r"^\s*FROM\s+attemptthisonline/(\S+).*$", f.read(), re.M)]
-    build_tag = "attemptthisonline/" + name
+        dependencies = [m.group(1) for m in re.finditer(r"^\s*FROM\s+registry.gitlab.pxeger.com/attempt-this-online/languages/(\S+).*$", f.read(), re.M)]
+    build_tag = "registry.gitlab.pxeger.com/attempt-this-online/languages/" + name
     push_tags = [
         "registry.gitlab.pxeger.com/attempt-this-online/languages/" + name + ":" + version
         for version in ("$now", "latest")
