@@ -1,6 +1,6 @@
 FROM registry.gitlab.pxeger.com/attempt-this-online/languages/clang
 
-ARG K_REV=ba2c2bab7e533e8fdc4e4cc2ee0c0c939990d5f5
+ARG K_REV=a1dac7940934fd23d403b462d6f0ee09853d55a4
 
 RUN curl -L https://codeberg.org/ngn/k/archive/$K_REV.tar.gz | \
     tar -xz && \
