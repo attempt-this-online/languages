@@ -1,6 +1,6 @@
 FROM registry.gitlab.pxeger.com/attempt-this-online/languages/swi_prolog
 
-ARG PAKCS_VERSION=3.5.1
+ARG PAKCS_VERSION=3.6.0
 
 ENV PATH=/opt/cpm/bin:/opt/pakcs/bin:$PATH
 
