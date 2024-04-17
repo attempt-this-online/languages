@@ -29,11 +29,12 @@ jobs:
 
           # only build images which are new or modified since the base
           git diff --name-only --no-renames --diff-filter=AM "${{ github.event.pull_request.base.sha }}" \
-          | grep Dockerfile | rev | cut -d/ -f2 | rev \
-          | go run breadmaker.go --docker || {
-            echo ::error::Build failed!
-            exit_status=$?
-          }
+          | grep Dockerfile$ \
+          | xargs dirname \
+          | xargs -n1 basename \
+          | go run breadmaker.go --docker || exit_status=$?
+
+          [ $exit_status -gt 0 ] && echo ::error::Build failed!
 
           shopt -s nullglob
           for file in output/*.log; do
