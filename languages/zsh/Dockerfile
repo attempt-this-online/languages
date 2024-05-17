@@ -8,7 +8,7 @@ RUN curl -L https://www.zsh.org/pub/zsh-$ZSH_VERSION.tar.xz | tar -xJ && \
         --with-tcsetpgrp \
         --enable-pcre \
         && \
-    make && \
+    make CC="gcc -DHAVE_BOOLCODES" && \
     make install && \
     cd / && \
     rm -rf /tmp/zsh-$ZSH_VERSION
