@@ -1,5 +1,9 @@
 stages: [init, build]
 
+workflow:
+  rules:
+    - if: $CI_COMMIT_BRANCH == "main"
+
 # template used for building docker images
 .base:
   stage: build
