@@ -10,9 +10,7 @@ RUN curl -L https://downloads.haskell.org/~ghcup/x86_64-linux-ghcup -o ghcup && 
 
 ENV PATH=/opt/.ghcup/bin:$PATH
 
-ARG HGL_REV=c1a0aeef949c1c243fe6007fca72e1a1e97c19db
-
-COPY hgl_base_4_17.patch /tmp/
+ARG HGL_REV=702406d06b681ab6930245b4e2b5f75ee43dd389
 
 RUN cabal --store-dir /opt/cabal update && \
     cabal --store-dir /opt/cabal install --lib --package-env /opt/ghc_env \
@@ -24,7 +22,6 @@ RUN cabal --store-dir /opt/cabal update && \
     curl -L https://gitlab.com/WheatWizard/haskell-golfing-library/-/archive/$HGL_REV/haskell-golfing-library-$HGL_REV.tar.gz | \
     tar -xz && \
     cd haskell-golfing-library-* && \
-    patch < /tmp/hgl_base_4_17.patch src/P/Functor.hs && \
     cabal --store-dir /opt/cabal install --lib --package-env /opt/ghc_env . && \
     cd / && \
     rm -rf /tmp/*
