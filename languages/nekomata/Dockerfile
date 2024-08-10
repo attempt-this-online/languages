@@ -1,6 +1,6 @@
 FROM registry.gitlab.pxeger.com/attempt-this-online/languages/haskell
 
-ARG NEKOMATA_VERSION=0.6.0.0
+ARG NEKOMATA_VERSION=0.7.0.0
 
 RUN curl -L https://github.com/AlephAlpha/Nekomata/archive/refs/tags/v$NEKOMATA_VERSION.tar.gz | \
     tar -xz && \
