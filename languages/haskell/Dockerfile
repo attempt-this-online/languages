@@ -18,7 +18,7 @@ RUN cabal --store-dir /opt/cabal update && \
         unix terminfo pretty time filepath directory process setenv \
         text binary array bytestring containers unordered-containers hashable integer-gmp utf8-string \
         transformers mtl semigroupoids free bifunctors profunctors comonad distributive primitive \
-        deepseq hpc stm call-stack random regex heredoc hspec QuickCheck colour && \
+        deepseq hpc stm call-stack random regex heredoc hspec QuickCheck colour lens && \
     curl -L https://gitlab.com/WheatWizard/haskell-golfing-library/-/archive/$HGL_REV/haskell-golfing-library-$HGL_REV.tar.gz | \
     tar -xz && \
     cd haskell-golfing-library-* && \
