@@ -1,6 +1,6 @@
 FROM registry.gitlab.pxeger.com/attempt-this-online/languages/base
 
-ARG PYTHON_VERSION=3.12.2
+ARG PYTHON_VERSION=3.13.0
 
 RUN curl -L https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tar.xz | \
     tar -xJ && \
