@@ -1,6 +1,6 @@
 FROM registry.gitlab.pxeger.com/attempt-this-online/languages/python
 
-ARG CHARCOAL_REV=c939a5e76f0470b8338200a54d41897e8bf6f69d
+ARG CHARCOAL_REV=9d13b5f1c2fed1c9854b403094a53829456232d1
 
 RUN pip install --no-cache-dir --upgrade regex brotli && \
     cd /opt && \
