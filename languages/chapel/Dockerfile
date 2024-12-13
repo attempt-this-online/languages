@@ -1,6 +1,6 @@
 FROM registry.gitlab.pxeger.com/attempt-this-online/languages/base
 
-ARG CHAPEL_VERSION=2.2.0
+ARG CHAPEL_VERSION=2.3.0
 
 ENV CHPL_HOME=/opt/chapel CHPL_LLVM=none
 RUN pacman -Syu --noconfirm python cmake && \
