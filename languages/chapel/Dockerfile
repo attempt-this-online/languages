@@ -8,5 +8,6 @@ RUN pacman -Syu --noconfirm python cmake && \
     tar -xz && \
     mv chapel-* /opt/chapel && \
     cd /opt/chapel && \
+    sed -i 's/3/4/g' third-party/llvm/cmake-ok.sh && \
     make -j $(nproc) && \
     ln -s $CHPL_HOME/bin/*/chpl /usr/local/bin/
