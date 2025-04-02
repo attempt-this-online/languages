@@ -1,6 +1,6 @@
 FROM registry.gitlab.pxeger.com/attempt-this-online/languages/base
 
-ARG CHAPEL_VERSION=2.2.0
+ARG CHAPEL_VERSION=2.4.0
 
 ENV CHPL_HOME=/opt/chapel CHPL_LLVM=none
 RUN pacman -Syu --noconfirm python cmake && \
@@ -8,5 +8,6 @@ RUN pacman -Syu --noconfirm python cmake && \
     tar -xz && \
     mv chapel-* /opt/chapel && \
     cd /opt/chapel && \
+    sed -i 's/3/4/g' third-party/llvm/cmake-ok.sh && \
     make -j $(nproc) && \
     ln -s $CHPL_HOME/bin/*/chpl /usr/local/bin/
