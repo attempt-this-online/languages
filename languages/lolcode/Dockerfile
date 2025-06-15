@@ -6,7 +6,7 @@ RUN curl -L https://github.com/justinmeza/lci/archive/refs/tags/v$LOLCODE_VERSIO
 	tar -xz && \
 	cd lci-$LOLCODE_VERSION && \
 	pacman -Syu --noconfirm cmake && \
-	cmake . && \
+	cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 . && \
 	make && \
 	make install && \
 	cp lci /usr/local/bin/ && \

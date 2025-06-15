@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 import glob
 import json
 import os.path
