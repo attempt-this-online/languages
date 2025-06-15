@@ -1,6 +1,6 @@
 FROM registry.gitlab.pxeger.com/attempt-this-online/languages/base
 
-ARG J_VERSION=903
+ARG J_VERSION=9.6
 
 COPY setup /tmp/
 
