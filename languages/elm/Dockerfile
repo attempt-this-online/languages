@@ -7,4 +7,4 @@ RUN curl -L https://github.com/elm/compiler/releases/download/$ELM_VERSION/binar
     chmod +x /usr/local/bin/elm && \
     npm install --global elm-line && \
     echo 'main = Interact.onLines identity' > dummy.elm && \
-    elm-line dummy.elm
+    timeout 900 bash -c 'until elm-line dummy.elm; do :; done'
