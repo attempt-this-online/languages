@@ -4,8 +4,9 @@ ARG J_VERSION=9.6
 
 COPY setup /tmp/
 
-RUN pacman -U --noconfirm https://archive.archlinux.org/packages/g/glibc/glibc-2.40-1-x86_64.pkg.tar.zst && \
-    curl -L http://www.jsoftware.com/download/j$J_VERSION/install/j${J_VERSION}_linux64.tar.gz | \
+ENV GLIBC_TUNABLES=glibc.rtld.execstack=2
+
+RUN curl -L http://www.jsoftware.com/download/j$J_VERSION/install/j${J_VERSION}_linux64.tar.gz | \
     tar -xz && \
     mv j$J_VERSION /opt/j && \
     cd /opt/j && \
