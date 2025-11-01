@@ -8,8 +8,8 @@ FROM registry.gitlab.pxeger.com/attempt-this-online/languages/base
 #     mv factor /opt/
 
 # Release:
-ARG FACTOR_VERSION=0.99
+ARG FACTOR_VERSION=0.100
 
-RUN curl -L https://downloads.factorcode.org/releases/$FACTOR_VERSION/factor-linux-x86-64-0.99.tar.gz | \
+RUN curl -L https://downloads.factorcode.org/releases/$FACTOR_VERSION/factor-linux-x86-64-$FACTOR_VERSION.tar.gz | \
     tar -xz && \
     mv factor /opt/
