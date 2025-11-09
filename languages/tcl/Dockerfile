@@ -5,7 +5,7 @@ ARG TCL_VERSION=9.0.2
 RUN curl -L http://prdownloads.sourceforge.net/tcl/tcl$TCL_VERSION-src.tar.gz | \
     tax -xz && \
     cd tcl* && \
-    ./configure &&
+    ./configure && \
     make -j $(nproc) && \
     make install && \
     cd / && \
