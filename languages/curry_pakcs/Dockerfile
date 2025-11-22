@@ -5,7 +5,7 @@ ARG PAKCS_VERSION=3.6.0
 ENV PATH=/opt/cpm/bin:/opt/pakcs/bin:$PATH
 
 RUN pacman -Syu --noconfirm git && \
-    curl -L https://www.informatik.uni-kiel.de/~pakcs/download/pakcs-$PAKCS_VERSION-amd64-Linux.tar.gz | \
+    curl -L https://www.curry-lang.org/pakcs/download/pakcs-$PAKCS_VERSION-amd64-Linux.tar.gz | \
     tar -xz && \
     mv pakcs-* /opt/pakcs && \
     cd /opt/pakcs && \
