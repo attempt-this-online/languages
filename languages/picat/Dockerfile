@@ -1,6 +1,6 @@
 FROM registry.gitlab.pxeger.com/attempt-this-online/languages/base
 
-ARG PICAT_VERSION=368
+ARG PICAT_VERSION=394
 
 RUN curl http://picat-lang.org/download/picat${PICAT_VERSION}_linux64.tar.gz | \
     tar -xz --no-same-owner && \
