@@ -1,6 +1,6 @@
 FROM registry.gitlab.pxeger.com/attempt-this-online/languages/base
 
-ARG PLUMLANG_REV=6ef73cdd01a7ac9a1cbe282d4b3378ea935ac74c
+ARG PLUMLANG_REV=v2.2.0
 
 RUN mkdir plumlang && \
     curl -L https://github.com/plumlang/plumlang/archive/$PLUMLANG_REV.tar.gz | \
